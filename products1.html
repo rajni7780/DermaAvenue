@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recommended Products</title>
+  <link rel="stylesheet" href="ashmeet.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Your Personalized Skincare Products</h1>
+    <div id="productList"></div>
+    <button onclick="window.location.href='index.html'">Back to Scanner</button>
+  </div>
+
+  <script>
+    const skinType = localStorage.getItem("skinType");
+
+    const products = {
+      "Oily": {
+        "Cleansers": [
+          { name: "Foaming Gel Cleanser", img: "images/oily-cleanser1.jpg" },
+          { name: "Oil Control Cleanser", img: "images/oily-cleanser2.jpg" },
+          { name: "Charcoal Face Wash", img: "images/oily-cleanser3.jpg" }
+        ],
+        "Moisturizers": [
+          { name: "Oil-Free Gel Moisturizer", img: "images/oily-moist1.jpg" },
+          { name: "Aloe Vera Gel", img: "images/oily-moist2.jpg" }
+        ],
+        "Serums": [
+          { name: "Niacinamide 10%", img: "images/oily-serum1.jpg" },
+          { name: "Salicylic Acid Serum", img: "images/oily-serum2.jpg" }
+        ]
+      },
+      "Dry": {
+        "Cleansers": [
+          { name: "Hydrating Milk Cleanser", img: "images/dry-cleanser1.jpg" },
+          { name: "Gentle Cream Cleanser", img: "images/dry-cleanser2.jpg" }
+        ],
+        "Moisturizers": [
+          { name: "Deep Hydration Cream", img: "images/dry-moist1.jpg" },
+          { name: "Ceramide Moisturizer", img: "images/dry-moist2.jpg" }
+        ],
+        "Serums": [
+          { name: "Hyaluronic Acid Serum", img: "images/dry-serum1.jpg" }
+        ]
+      },
+      "Combination": {
+        "Cleansers": [
+          { name: "Balancing Gel Cleanser", img: "images/comb-cleanser1.jpg" }
+        ],
+        "Moisturizers": [
+          { name: "Lightweight Gel Cream", img: "images/comb-moist1.jpg" }
+        ],
+        "Serums": [
+          { name: "Vitamin C Serum", img: "images/comb-serum1.jpg" }
+        ]
+      },
+      "Normal": {
+        "Cleansers": [
+          { name: "Daily Gentle Cleanser", img: "images/norm-cleanser1.jpg" }
+        ],
+        "Moisturizers": [
+          { name: "Hydrating Day Cream", img: "images/norm-moist1.jpg" }
+        ],
+        "Serums": [
+          { name: "Antioxidant Serum", img: "images/norm-serum1.jpg" }
+        ]
+      },
+      "Sensitive": {
+        "Cleansers": [
+          { name: "Fragrance-Free Cleanser", img: "images/sens-cleanser1.jpg" }
+        ],
+        "Moisturizers": [
+          { name: "Soothing Cream", img: "images/sens-moist1.jpg" }
+        ],
+        "Serums": [
+          { name: "Calming Serum", img: "images/sens-serum1.jpg" }
+        ]
+      }
+    };
+
+    const container = document.getElementById("productList");
+
+    if (skinType && products[skinType]) {
+      container.innerHTML = `<h2>${skinType} Skin Recommendations</h2>`;
+      for (let category in products[skinType]) {
+        container.innerHTML += `<h3>${category}</h3>`;
+        products[skinType][category].forEach(p => {
+          container.innerHTML += `
+            <div class="product">
+              <img src="${p.img}" alt="${p.name}">
+              <p>${p.name}</p>
+            </div>
+          `;
+        });
+      }
+    } else {
+      container.innerHTML = "<p>No skin type detected. Please go back and scan again.</p>";
+    }
+  </script>
+</body>
+</html>
+

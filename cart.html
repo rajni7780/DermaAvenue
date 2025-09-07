@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="cart.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Shake </title>
+
+</head>
+<body>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .top-bar {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+    .top-bar button {
+      margin-left: 10px;
+      background: white;
+      color: black;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .header {
+      background: #f8f8f8;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .left-menu, .center-logo, .right-menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 90px;
+    }
+    .center-logo {
+      flex: 1;
+      justify-content: left;
+    }
+    .center-logo img {
+      height: 80px;
+      
+     
+    }
+    .menu-link, .icon {
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+    }
+    .icon {
+      font-size: 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 10px;
+      background: #f8f8f8;
+      border-top: 1px solid #ddd;
+    }
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    Minimum Order amount INR 499. Free Shipping above INR 999.
+    <button>SHOP NOW</button>
+  </div>
+
+  <header class="header">
+    <div class="left-menu">
+      <a href="#" class="menu-link"><strong>DERMA</strong> Avenue</a>
+    </div>
+    <div class="center-logo">
+      <img src="LOGOS24.png" alt="My Skin Care Logo">
+    </div>
+    <div class="right-menu">
+      <a href="#" class="icon"><i class="fas fa-search"></i></a>
+      <a href="contact.html" class="icon"><i class="fas fa-phone"></i></a>
+      <a href="" class="icon"><i class="far fa-heart"></i></a>
+      <a href="shop.html" class="icon"><i class="fas fa-shopping-bag"></i></a>
+    </div>
+  </header><br>
+  <div class="a">
+<div class="a1"><h1>SHAKE N SIP </h1></div>
+
+<form id="orderForm" onsubmit="return false;">
+  <label for="ShakeSelect">Select Shake:</label>
+  <select id="ShakeSelect" required>
+    
+    <option value="" data-price="0">-- Choose an item --</option>
+    <option value="Chocolate Milkshake " data-price="60">Chocolate Milkshake- 60</option>
+    <option value="Strawberry Milkshake" data-price="80">strawberry Milkshake - 80</option>
+    <option value="Coffee Milkshake" data-price="100">Coffee Milkshake- 100</option>
+    <option value="Casein Protein " data-price="1000">Casein Protein - 1000</option>
+    <option value="Whey Isolate" data-price="1500">Whey Isolate- 1500</option>
+    <option value="Banana Berry Protein" data-price="2000">Banana Berry Protein - 2000</option>
+    <option value="Peanut Butter Berry" data-price="100">Peanut Butter Berry - 100</option>
+    <option value="Avocado Banana Smoothie" data-price="120">Avocado Banana Smoothie - 120</option>
+    <option value="Banana Oat Smoothie" data-price="160">Banana Oat Smoothie - 160</option>
+  </select>
+
+  <label for="quantity">Quantity:</label>
+  <input type="number" id="quantity" min="1" value="1" required />
+
+  <div class="output-field">
+    <strong>Shake Price:</strong> <span id="ShakePrice">0.00</span>
+  </div>
+
+  <div class="output-field">
+    <strong>Total Amount:</strong> <span id="totalAmount">0.00</span>
+  </div>
+
+  <button id="payBillBtn">Pay Bill</button>
+</form>
+
+<script>
+  const ShakeSelect = document.getElementById('ShakeSelect');
+  const quantityInput = document.getElementById('quantity');
+  const ShakePriceSpan = document.getElementById('ShakePrice');
+  const totalAmountSpan = document.getElementById('totalAmount');
+  const payBillBtn = document.getElementById('payBillBtn');
+
+  function updatePrices() {
+    let selectedOption = ShakeSelect.options[ShakeSelect.selectedIndex];
+    let price = parseFloat(selectedOption.getAttribute('data-price')) || 0;
+    let quantity = parseInt(quantityInput.value) || 0;
+
+    ShakePriceSpan.textContent = price.toFixed(2);
+    let total = price * quantity;
+    totalAmountSpan.textContent = total.toFixed(2);
+  }
+
+  ShakeSelect.addEventListener('change', updatePrices);
+  quantityInput.addEventListener('input', updatePrices);
+
+  payBillBtn.addEventListener('click', () => {
+    let selectedShake = ShakeSelect.value;
+    if (!selectedShake) {
+      alert('Please select a Shake item before paying.');
+      return;
+    }
+    let quantity = parseInt(quantityInput.value);
+    if (quantity < 1 || isNaN(quantity)) {
+      alert('Please enter a valid quantity.');
+      return;
+    }
+    let total = parseFloat(totalAmountSpan.textContent);
+    alert(Thank you for your order!\n\nShake: ${selectedShake}\nQuantity: ${quantity}\nTotal amount to pay: ${total.toFixed(2)});
+  });
+
+  // Initialize prices on page load
+  updatePrices();
+</script></div>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+
+.d1:hover
+{
+transform: rotate(90deg);
+}
+.d2
+{
+    column-count: 3;
+    column-gap: 40px;
+}
+.d4
+{
+  display: inline-block;
+}
+.d4 a
+{
+    color: black;
+    border: 2px solid black;
+    float: left;
+}
+.d4 a:hover
+{
+    background-color: brown;
+}
+.b1
+{
+    border-color: red;
+}
+.b2
+{
+    border-color: blue;
+}
+.b3
+{
+    border-color: pink;
+}
+.b1:hover
+{
+    background-color: red;
+    color: bisque;
+}
+.b2:hover
+{
+    background-color: blue;
+    color:bisque;
+}
+.b3:hover
+{
+    background-color: pink;
+    color: blanchedalmond;
+}

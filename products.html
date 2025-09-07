@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product Page</title>
+</head>
+<body>
+  <h1>Shop Our Products</h1>
+
+  <div>
+    <h2>Product A - $30</h2>
+    <img src="moist11.jpg" alt="Product A" width="150">
+    <label>Quantity: <input type="number" id="qty1" min="0" value="0"></label><br>
+    <button onclick="addSingleToCart(1)">Add to Cart</button>
+  </div>
+
+  <div>
+    <h2>Product B - $50</h2>
+    <img src="sun9.jpg" alt="Product B" width="150">
+    <label>Quantity: <input type="number" id="qty2" min="0" value="0"></label><br>
+    <button onclick="addSingleToCart(2)">Add to Cart</button>
+  </div>
+
+  <div>
+    <h2>Product C - $20</h2>
+    <img src="serum8.jpg" alt="Product C" width="150">
+    <label>Quantity: <input type="number" id="qty3" min="0" value="0"></label><br>
+    <button onclick="addSingleToCart(3)">Add to Cart</button>
+  </div>
+
+  <br>
+  <button onclick="goToCart()">Go to Cart</button>
+
+  <script>
+    const products = [
+      { id: 1, name: "Product A", price: 30, image: "product-a.jpg" },
+      { id: 2, name: "Product B", price: 50, image: "product-b.jpg" },
+      { id: 3, name: "Product C", price: 20, image: "product-c.jpg" },
+    ];
+
+    function addSingleToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      const qty = parseInt(document.getElementById("qty" + productId).value);
+
+      if (qty <= 0) {
+        alert("Please enter a quantity greater than 0.");
+        return;
+      }
+
+      const newItem = { ...product, quantity: qty };
+
+      // Load existing cart or create new
+      let cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+      // Check if product already in cart
+      const existing = cart.find(item => item.id === productId);
+      if (existing) {
+        existing.quantity += qty;
+      } else {
+        cart.push(newItem);
+      }
+
+      localStorage.setItem("cartItems", JSON.stringify(cart));
+      alert(`${product.name} added to cart!`);
+    }
+
+    function goToCart() {
+      const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
+      if (cart.length === 0) {
+        alert("Your cart is empty.");
+      } else {
+        window.location.href = "processor.html";
+      }
+    }
+  </script>
+ 
+</body>
+</html>

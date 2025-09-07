@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Skincare Shop</title>
+  <body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .top-bar {
+      background: black;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+    .top-bar button {
+      margin-left: 10px;
+      background: white;
+      color: black;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .header {
+      background: #f8f8f8;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .left-menu, .center-logo, .right-menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 90px;
+    }
+    .center-logo {
+      flex: 1;
+      justify-content: left;
+    }
+    .center-logo img {
+      height: 80px;
+      
+     
+    }
+    .menu-link, .icon {
+      text-decoration: none;
+      color: black;
+      font-size: 16px;
+    }
+    .icon {
+      font-size: 20px;
+    }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 10px;
+      background: #f8f8f8;
+      border-top: 1px solid #ddd;
+    }
+    nav a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    Minimum Order amount INR 499. Free Shipping above INR 999.
+    <button>SHOP NOW</button>
+  </div>
+
+  <header class="header">
+    <div class="left-menu">
+      
+    </div>
+    <div class="center-logo">
+      <img src="LOGOS24.png" alt="my skincare logo">
+    </div>
+    <div class="right-menu">
+      <a href="#" class="icon">
+      <a href="contact.html" class="icon"><i class="fas fa-phone"></i></a>
+      <a href="favs.html" class="icon"><i class="far fa-heart"></i></a>
+      <a href="shop.html" class="icon"><i class="fas fa-shopping-bag"></i></a>
+      <a href="about.html" class="icon">👤</i></a>
+    </div>
+  </header>
+  <style>
+body{
+  background-color:plum;
+}
+.top-bar{
+  text-align: center;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+    .product-card {
+      border: 1px solid #ccc;
+      padding: 10px;
+      width: 200px;
+      margin: 10px;
+      display: inline-block;
+    }
+    .wishlist-btn {
+      font-size: 24px;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+    .wishlist-btn.liked {
+      color: red;
+    }
+    .ra
+    {
+      text-align: center;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    h3{
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+  
+  </style>
+</head>
+<body>
+
+<div class="ra"><h1>Our BestSeller Skincare Products</h1></div>
+
+<div class="product-card" data-name="Vitamin C Serum" data-price="₹250" data-image="images/serum.jpg">
+  <img src="serum2.jpg" width="150">
+  <h3>Vitamin C Serum</h3>
+  <p>Price: ₹250</p>
+  <button class="wishlist-btn" onclick="toggleWishlist(this)">🤍</button>
+</div>
+
+<div class="product-card" data-name="Hydrating Moisturizer" data-price="₹330" data-image="images/moisturizer.jpg">
+  <img src="moist12.jpg" width="150">
+  <h3>Hydrating Moisturizer</h3>
+  <p>Price: ₹330</p>
+  <button class="wishlist-btn" onclick="toggleWishlist(this)">🤍</button>
+</div>
+<div class="product-card" data-name="Hydrating cleanser" data-price="₹320" data-image="images/moisturizer.jpg">
+  <img src="clean1.jpg" width="150">
+  <h3>Hydrating Cleanser</h3>
+  <p>Price: ₹320</p>
+  <button class="wishlist-btn" onclick="toggleWishlist(this)">🤍</button>
+</div>
+<div class="product-card" data-name="Toner" data-price="₹230" data-image="images/moisturizer.jpg">
+  <img src="toner2.jpg" width="150">
+  <h3>Toner</h3>
+  <p>Price: ₹230</p>
+  <button class="wishlist-btn" onclick="toggleWishlist(this)">🤍</button>
+</div>
+<div class="product-card" data-name="Dot and Key Moisturizer" data-price="₹480" data-image="images/moisturizer.jpg">
+  <img src="moist9.jpg" width="150">
+  <h3>Dot and Key Moisturizer</h3>
+  <p>Price: ₹480</p>
+  <button class="wishlist-btn" onclick="toggleWishlist(this)">🤍</button>
+
+</div>
+
+
+
+<br>
+<a href="whislist.html">Go to Wishlist 📝</a>
+
+<script>
+  // Load wishlist from localStorage
+  let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+  // Initialize heart icons on page load
+  window.onload = () => {
+    document.querySelectorAll('.product-card').forEach(card => {
+      const name = card.dataset.name;
+      const btn = card.querySelector('.wishlist-btn');
+      if (wishlist.find(item => item.name === name)) {
+        btn.classList.add('liked');
+        btn.innerText = '❤️';
+      }
+    });
+  };
+
+  function toggleWishlist(btn) {
+    const card = btn.closest('.product-card');
+    const product = {
+      name: card.dataset.name,
+      price: card.dataset.price,
+      image: card.dataset.image
+    };
+
+    const existing = wishlist.find(item => item.name === product.name);
+
+    if (existing) {
+      // Remove from wishlist
+      wishlist = wishlist.filter(item => item.name !== product.name);
+      btn.classList.remove('liked');
+      btn.innerText = '🤍';
+    } else {
+      // Add to wishlist
+      wishlist.push(product);
+      btn.classList.add('liked');
+      btn.innerText = '❤️';
+    }
+
+    // Save updated wishlist
+    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  }
+</script><br><br>
+<style>
+.footer-top {
+  background-color: #f5f0e8;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: black;
+  color: white;
+}
+
+.footer-bottom .links {
+  display: flex;
+  gap: 40px;
+}
+
+.glow-section {
+  padding: 40px 20px;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.product-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+
+.product {
+  width: 270px;
+
+}
+
+.product img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.product img:hover {
+  transform: scale(1.05);
+}
+
+.product p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+.footer {
+      background-color:black;
+      padding: 40px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .footer h3 {
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+    .footer ul {
+      list-style: none;
+      padding: 0;
+    }
+    .footer ul li {
+      margin-bottom: 8px;
+    }
+    .footer a {
+      text-decoration: none;
+      color:white;
+    }
+    .contact-info i {
+      margin-right: 10px;
+      text-decoration: none;
+      color: white;
+    }
+    .newsletter input[type="email"] {
+      padding: 10px;
+      width: 70%;
+      margin-right: 10px;
+      border: none;
+    }
+    .newsletter button {
+      padding: 10px 20px;
+      background-color:black;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .bottom-bar {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+    .payment-icons img {
+      height: 30px;
+      margin: 0 5px;
+    }
+    .social-icons a {
+      margin-right: 10px;
+      color: white;
+      font-size: 20px;
+    }
+    </style>
+     <footer>
+    <div class="footer-top">Limited Time Offer - Use Coupon Derma20 - 10% Instant Discount on Prepaid Order - SHOP NOW →</div>
+    <div class="footer-bottom">
+      <div class="logo">DermaAvenue™</div>
+      <div class="links">
+        <div><strong>Useful Links</strong><br>About Us</div>
+        <div><strong>Help</strong><br>Terms & Conditions</div>
+        <div><strong>We Don’t Keep Our Beauty Secrets</strong><br>Shop</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
