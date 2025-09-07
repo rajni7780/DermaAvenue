@@ -1,0 +1,12 @@
+.wishlist-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.wishlist-btn.added {
+  color: red;
+  transform: scale(1.2);
+}
